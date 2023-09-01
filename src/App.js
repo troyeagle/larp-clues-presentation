@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import ClueBoard from './ClueBoard';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='cluesection'>
+        <ClueBoard above="./a1u.png" below="a1d.png" row={3} column={6}/>
+        <ClueBoard above="./a2u.png" below="a2d.png" row={3} column={6}/>
+        <ClueBoard above="./a3u.png" below="a3d.png" row={3} column={6}/>
+        <ClueBoard above="./b1u.png" below="b1d.png" row={3} column={6}/>
+        <ClueBoard above="./b2u.png" below="b2d.png" row={3} column={6}/>
+        <ClueBoard above="./c2u.png" below="c2d.png" row={3} column={6}/>
+        <ClueBoard above="./d1u.png" below="d1d.png" row={3} column={6}/>
+        <ClueBoard above="./f1u.png" below="f1d.png" row={3} column={6}/>
+      </div>
+      
     </div>
   );
 }
