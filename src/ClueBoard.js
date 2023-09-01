@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import './ClueBoard.css';
 
-function ClueBoard({above, below, row, column}) {
+function ClueBoard({above, below, row, column, header}) {
 
   const [imgs, setImgs] = useState([]);
 
@@ -64,7 +64,7 @@ function ClueBoard({above, below, row, column}) {
   return (
     <div className="clues-wrapper">
       <div className="clue-header">
-        <div>《白衣倾城》线索板</div>
+        <div>{header}</div>
       </div>
       <div className="clues">
         <img className="aboveImg" alt='above' src={above} onClick={setBelowRevealed}></img>
