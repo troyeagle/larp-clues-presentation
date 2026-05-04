@@ -1,0 +1,7 @@
+{
+  "name": "线索板 A2",
+  "back": "./a2u.png",
+  "front": "./a2d.png",
+  "row": 3,
+  "column": 6
+}

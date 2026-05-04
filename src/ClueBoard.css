@@ -1,33 +1,37 @@
 .clues-wrapper {
   display: flex;
   flex-direction: row;
+  min-height: calc(100vh - 80px);
 }
 
 .clues {
   position: relative;
   width: 100%;
+  flex: 1;
+}
 
-  .aboveImg {
-    position: relative;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
+.aboveImg {
+  position: relative;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+}
 
-  .belowImg {
-    position: absolute;
-    z-index: 2;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
+.belowImg {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  cursor: pointer;
 }
 
 .clue-header {
   background-color: #282c34;
-  min-height: 100vh;
-  min-width: 15vw;
+  min-width: 120px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -35,4 +39,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
   writing-mode: vertical-rl;
+  padding: 20px 10px;
+}
+
+.clue-header div {
+  white-space: nowrap;
 }
