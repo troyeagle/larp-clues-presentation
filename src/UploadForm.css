@@ -1,0 +1,185 @@
+.upload-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.upload-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.upload-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.upload-body {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.upload-section {
+  margin-bottom: 24px;
+}
+
+.field-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.field-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #4a90d9;
+}
+
+.upload-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.upload-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-dropzone {
+  width: 100%;
+  height: 200px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  background: #fafafa;
+}
+
+.upload-dropzone:hover {
+  border-color: #4a90d9;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #999;
+  gap: 8px;
+}
+
+.upload-icon {
+  font-size: 36px;
+  line-height: 1;
+  color: #bbb;
+}
+
+.upload-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.btn-replace {
+  margin-top: 8px;
+  background: #f0f0f0;
+  color: #555;
+  font-size: 12px;
+  padding: 4px 10px;
+  align-self: flex-start;
+}
+
+.compressing-hint {
+  text-align: center;
+  color: #4a90d9;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.upload-grid-config {
+  margin-bottom: 32px;
+}
+
+.grid-inputs {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.grid-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.grid-field span {
+  font-size: 13px;
+  color: #777;
+}
+
+.grid-field input {
+  width: 100px;
+  padding: 10px 12px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.grid-field input:focus {
+  outline: none;
+  border-color: #4a90d9;
+}
+
+.grid-x {
+  font-size: 20px;
+  color: #999;
+  margin-top: 20px;
+}
+
+.grid-hint {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: #999;
+}
+
+.upload-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .upload-images {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-inputs {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .grid-x {
+    display: none;
+  }
+}
