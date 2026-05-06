@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import './ClueBoard.css';
 
 function ClueBoard({above, below, row, column, header}) {
 
   const [imgs, setImgs] = useState([]);
+  const imgRef = useRef(null);
 
   const arr = new Array(row);
   for (let i = 0; i < arr.length; i++) {
@@ -15,27 +16,25 @@ function ClueBoard({above, below, row, column, header}) {
 
   const setBelowHidden = (i, j) => {
     setVisibles(prevVisibles => {
-      prevVisibles[i][j] = 'hidden';
-      // 新建一个数组，否则 react hooks 不响应
-      return [...prevVisibles];
+      const next = prevVisibles.map(row => [...row]);
+      next[i][j] = 'hidden';
+      return next;
     })
   }
 
   const setBelowRevealed = (e) => {
-    const img = document.getElementsByClassName('aboveImg')[0];
-    // min：避免数字过大点出界
+    const img = imgRef.current;
+    if (!img) return;
     const columnIdx = Math.min(Math.floor(e.nativeEvent.offsetX * column / img.width), column - 1);
+    const rowIdx = Math.min(Math.floor(e.nativeEvent.offsetY * row / img.height), row - 1);
 
-    const rowIdx = Math.min(Math.floor(e.nativeEvent.offsetY * row / img.height), row-1);
-
-    console.log('the img is located at ', columnIdx, rowIdx);
     setVisibles(prevVisibles => {
-      prevVisibles[rowIdx][columnIdx] = 'visible';
-      return [...prevVisibles];
+      const next = prevVisibles.map(row => [...row]);
+      next[rowIdx][columnIdx] = 'visible';
+      return next;
     })
   }
 
-  // inset 只接受百分号语法。。
   const toPerc = (k) => {
     return Math.round(k * 100) + '%';
   }
@@ -44,7 +43,6 @@ function ClueBoard({above, below, row, column, header}) {
     const bel = [];
     for(let i = 0; i < row; i++) {
       for (let j = 0;j < column; j++) {
-        // 让图片的一小部分矩形显现
         const clip = `inset(${toPerc(i/row)} ${toPerc((column - 1 - j)/column)} ${toPerc((row - 1 - i)/row)} ${toPerc(j/column)})`;
         bel.push(<img
           src={below}
@@ -67,7 +65,7 @@ function ClueBoard({above, below, row, column, header}) {
         <div>{header}</div>
       </div>
       <div className="clues">
-        <img className="aboveImg" alt='above' src={above} onClick={setBelowRevealed}></img>
+        <img ref={imgRef} className="aboveImg" alt='above' src={above} onClick={setBelowRevealed}></img>
         {imgs}
       </div>
     </div>
