@@ -1,22 +1,24 @@
+import { useState } from 'react';
 import './App.css';
-import ClueBoard from './ClueBoard';
+import TaskList from './TaskList';
+import UploadForm from './UploadForm';
+import Presentation from './Presentation';
 
 function App() {
+  const [page, setPage] = useState('list');
+  const [taskId, setTaskId] = useState(null);
 
-  const header = '《白衣倾城》线索板'
+  const navigate = (target, id) => {
+    setTaskId(id || null);
+    setPage(target);
+  };
+
   return (
     <div className="App">
-      <div className='cluesection'>
-        <ClueBoard above="./a1u.png" below="a1d.png" row={3} column={6} header={header}/>
-        <ClueBoard above="./a2u.png" below="a2d.png" row={3} column={6} header={header}/>
-        <ClueBoard above="./a3u.png" below="a3d.png" row={3} column={6} header={header}/>
-        <ClueBoard above="./b1u.png" below="b1d.png" row={3} column={6} header={header}/>
-        <ClueBoard above="./b2u.png" below="b2d.png" row={3} column={6} header={header}/>
-        <ClueBoard above="./c2u.png" below="c2d.png" row={3} column={6} header={header}/>
-        <ClueBoard above="./d1u.png" below="d1d.png" row={3} column={6} header={header}/>
-        <ClueBoard above="./f1u.png" below="f1d.png" row={3} column={6} header={header}/>
-      </div>
-      
+      {page === 'list' && <TaskList onNavigate={navigate} />}
+      {page === 'upload' && <UploadForm onNavigate={navigate} />}
+      {page === 'edit' && <UploadForm taskId={taskId} onNavigate={navigate} />}
+      {page === 'present' && <Presentation taskId={taskId} onNavigate={navigate} />}
     </div>
   );
 }

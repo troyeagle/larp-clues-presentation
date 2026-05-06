@@ -1,0 +1,12 @@
+{
+  "clues": [
+    { "folder": "a1", "path": "/clues/a1/clue.json" },
+    { "folder": "a2", "path": "/clues/a2/clue.json" },
+    { "folder": "a3", "path": "/clues/a3/clue.json" },
+    { "folder": "b1", "path": "/clues/b1/clue.json" },
+    { "folder": "b2", "path": "/clues/b2/clue.json" },
+    { "folder": "c2", "path": "/clues/c2/clue.json" },
+    { "folder": "d1", "path": "/clues/d1/clue.json" },
+    { "folder": "f1", "path": "/clues/f1/clue.json" }
+  ]
+}
