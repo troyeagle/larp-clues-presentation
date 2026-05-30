@@ -4,18 +4,20 @@ export async function fetchBuiltInClues() {
   if (builtInCache) return builtInCache;
 
   try {
-    const res = await fetch('/clues/manifest.json');
+    const publicUrl = process.env.PUBLIC_URL || '';
+    const res = await fetch(`${publicUrl}/clues/manifest.json`);
     if (!res.ok) return [];
     const manifest = await res.json();
 
     const clues = await Promise.all(
       manifest.clues.map(async (entry) => {
         try {
-          const clueRes = await fetch(entry.path);
+          const fullEntryPath = publicUrl + entry.path;
+          const clueRes = await fetch(fullEntryPath);
           if (!clueRes.ok) return null;
           const data = await clueRes.json();
 
-          const basePath = entry.path.substring(0, entry.path.lastIndexOf('/') + 1);
+          const basePath = fullEntryPath.substring(0, fullEntryPath.lastIndexOf('/') + 1);
 
           return {
             id: `builtin_${entry.folder}`,
