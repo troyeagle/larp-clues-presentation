@@ -1,0 +1,30 @@
+name: Publish to blog (private-source fallback)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: blog-fallback-${{ github.ref }}
+  cancel-in-progress: false
+
+# Intentionally retained, but inactive by default. Only the explicitly selected
+# blog mode can upload site-clue; project Pages uses the opposite condition.
+# Never enable a blog destination until the approved output and read token scope
+# have been reviewed. Do not put BLOG_PUBLISH_TOKEN in this source repository.
+jobs:
+  publish:
+    name: Publish static application
+    if: vars.SITE_PUBLISH_MODE == 'blog'
+    uses: troyeagle/troyeagle.github.io/.github/workflows/build-static-app.yml@ae5ddba2b5eab23af91016ae91cf3afff662b42c
+    with:
+      app: clue
+      publisher_ref: ae5ddba2b5eab23af91016ae91cf3afff662b42c
+    secrets:
+      BLOG_DISPATCH_TOKEN: ${{ secrets.BLOG_DISPATCH_TOKEN }}

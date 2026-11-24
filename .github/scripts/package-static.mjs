@@ -1,3 +1,6 @@
+// Legacy packaging reference retained for migration history.
+// Active blog-mode releases use the pinned shared publisher in publish-to-blog.yml,
+// which enforces the current path and source-map policy.
 import { createHash } from 'node:crypto';
 import { lstat, readdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
