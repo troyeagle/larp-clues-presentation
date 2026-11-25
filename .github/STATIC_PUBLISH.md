@@ -42,3 +42,7 @@ npm run build
 ```
 
 AI agent 的提交只使用 `Co-authored-by: Bot <bot@anonymous.com>` 一条匿名尾注，推送前读取实际提交信息核对；主作者仍使用用户指定的仓库身份。发布身份、构建记录与回退说明随代码提交，不写入任何 Token 值。
+
+## Git 提交身份
+
+人类作者和提交者统一为 `troyeagle <troyeagle@qq.com>`，AI 协作者为 `Bot <bot@anonymous.com>`；按根目录 `AGENTS.md` 配置本仓库本地身份。历史改写后，共享 workflow 与 publisher_ref 必须使用博客新历史中的同一固定 SHA，并重新构建验证。
